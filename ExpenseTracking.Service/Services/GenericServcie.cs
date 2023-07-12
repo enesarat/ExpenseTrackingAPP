@@ -2,6 +2,7 @@
 using ExpenseTracking.Core.Repositories;
 using ExpenseTracking.Core.Services;
 using ExpenseTracking.Core.UnitOfWorks;
+using ExpenseTracking.Service.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -52,11 +53,11 @@ namespace ExpenseTracking.Service.Services
         public async Task<T> GetByIdAsync(int id)
         {
             var entity = await _repository.GetByIdAsync(id);
-            if (entity.IsActive != false)
+            if (entity!=null && entity.IsActive != false)
             {
                 return entity;
             }
-            throw new Exception($"{typeof(T).Name} ({id}) not found. Retrieve operation is not successfull. \"");
+            throw new NotFoundException($"{typeof(T).Name} ({id}) not found. Retrieve operation is not successfull. ");
         }
 
         public async Task UpdateAsync(T entity)
@@ -68,7 +69,7 @@ namespace ExpenseTracking.Service.Services
             }
             else
             {
-                throw new Exception($" {typeof(T)} ({entity.Id}) not found. Updete operation is not successfull. ");
+                throw new NotFoundException($" {typeof(T).Name} ({entity.Id}) not found. Updete operation is not successfull. ");
             }
         }
 

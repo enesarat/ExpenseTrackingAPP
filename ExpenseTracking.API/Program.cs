@@ -1,4 +1,5 @@
 using ExpenseTracking.API.Filters;
+using ExpenseTracking.API.Middlewares;
 using ExpenseTracking.Core.Repositories;
 using ExpenseTracking.Core.Services;
 using ExpenseTracking.Core.UnitOfWorks;
@@ -79,6 +80,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCustomException();
 
 app.UseAuthorization();
 
