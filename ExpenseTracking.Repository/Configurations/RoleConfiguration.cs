@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Repository.Configurations
 {
-    public class RoleConfigurations : IEntityTypeConfiguration<Role>
+    public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
