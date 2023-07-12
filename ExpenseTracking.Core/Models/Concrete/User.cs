@@ -1,4 +1,4 @@
-﻿using ExpenseTracking.Core.Model.Abstract;
+﻿using ExpenseTracking.Core.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpenseTracking.Core.Model.Concrete
+namespace ExpenseTracking.Core.Models.Concrete
 {
     public class User : BaseModel
     {

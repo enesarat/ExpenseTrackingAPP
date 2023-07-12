@@ -1,12 +1,13 @@
-﻿using System;
+﻿using ExpenseTracking.Core.Models.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpenseTracking.Core.Model.Concrete
+namespace ExpenseTracking.Core.Models.Concrete
 {
-    public class Expense
+    public class Expense : BaseModel
     {
         public string Name { get; set; }
         public string Description { get; set; }
