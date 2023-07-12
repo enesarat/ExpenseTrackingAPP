@@ -1,5 +1,7 @@
 ﻿using ExpenseTracking.Core.DTOs.Astract;
 using ExpenseTracking.Core.DTOs.Concrete.Category;
+using ExpenseTracking.Core.DTOs.Concrete.PaymentType;
+using ExpenseTracking.Core.DTOs.Concrete.User;
 using ExpenseTracking.Core.Models.Concrete;
 using System;
 using System.Collections.Generic;

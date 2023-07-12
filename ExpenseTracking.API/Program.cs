@@ -1,8 +1,11 @@
 using ExpenseTracking.Core.Repositories;
+using ExpenseTracking.Core.Services;
 using ExpenseTracking.Core.UnitOfWorks;
 using ExpenseTracking.Repository.Contexts;
 using ExpenseTracking.Repository.Repositories;
 using ExpenseTracking.Repository.UnitOfWorks;
+using ExpenseTracking.Service.Mappers;
+using ExpenseTracking.Service.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -18,6 +21,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(x =>
