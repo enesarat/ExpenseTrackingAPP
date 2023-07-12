@@ -15,7 +15,7 @@ namespace ExpenseTracking.Repository.Configurations
         {
             builder.Property(x => x.Name).IsRequired().HasMaxLength(30);
             builder.Property(x => x.Description).IsRequired().HasMaxLength(150);
-            builder.Property(x => x.Cost).IsRequired().HasColumnType("double(18,2)");
+            builder.Property(x => x.Cost).IsRequired().HasColumnType("decimal(18,2)");
             builder.Property(x => x.TransactionDate).IsRequired();
         }
     }

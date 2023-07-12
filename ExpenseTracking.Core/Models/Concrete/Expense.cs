@@ -12,7 +12,7 @@ namespace ExpenseTracking.Core.Models.Concrete
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime TransactionDate { get; set; }
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public int PaymentTypeId { get; set; }
