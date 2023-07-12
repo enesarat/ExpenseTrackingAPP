@@ -1,4 +1,5 @@
-﻿using ExpenseTracking.Core.DTOs.Concrete.Response;
+﻿using ExpenseTracking.API.Filters;
+using ExpenseTracking.Core.DTOs.Concrete.Response;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace ExpenseTracking.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ValidateFilterAttribute]
     public class CustomBaseController : ControllerBase
     {
         [NonAction]

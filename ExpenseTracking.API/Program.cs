@@ -1,5 +1,8 @@
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
 using ExpenseTracking.API.Filters;
 using ExpenseTracking.API.Middlewares;
+using ExpenseTracking.API.Modules;
 using ExpenseTracking.Core.Repositories;
 using ExpenseTracking.Core.Services;
 using ExpenseTracking.Core.UnitOfWorks;
@@ -48,13 +51,13 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+/*
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped(typeof(ICategoryRepository), typeof(CategoryRepository));
 builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
-
+*/
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
@@ -67,7 +70,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(x =>
     });
 });
 
-
+builder.Host.UseServiceProviderFactory
+    (new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepositoryAndServiceModule()));
 
 
 var app = builder.Build();
