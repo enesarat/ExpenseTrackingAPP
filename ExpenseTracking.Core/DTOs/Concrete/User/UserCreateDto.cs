@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.DTOs.Concrete.User
 {
-    public class UserCreateDto : BaseDto
+    public class UserCreateDto
     {
         public string Name { get; set; }
         public string Surname { get; set; }

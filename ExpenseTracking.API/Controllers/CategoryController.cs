@@ -8,8 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ExpenseTracking.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class CategoryController : CustomBaseController
     {
         private readonly IMapper _mapper;
@@ -27,7 +25,7 @@ namespace ExpenseTracking.API.Controllers
             var catgory = await _service.GetByIdAsync(id);
             var catgoryAsDto = _mapper.Map<CategoryDto>(catgory);
 
-            return CustomActionResult(CustomResponse<Category>.Success(200, catgory));
+            return CustomActionResult(CustomResponse<CategoryDto>.Success(200, catgoryAsDto));
         }
 
         [HttpGet]

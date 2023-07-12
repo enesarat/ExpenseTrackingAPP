@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.DTOs.Concrete.Role
 {
-    public class RoleCreateDto : BaseDto
+    public class RoleCreateDto 
     {
         public string Name { get; set; }
     }

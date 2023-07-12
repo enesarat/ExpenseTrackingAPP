@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.DTOs.Concrete.PaymentType
 {
-    public class PaymentTypeCreateDto : BaseDto
+    public class PaymentTypeCreateDto
     {
         public string Name { get; set; }
     }

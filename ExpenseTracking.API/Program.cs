@@ -20,6 +20,10 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.Extensions.Logging;
+using ExpenseTracking.Core.DTOs.Concrete.Expense;
+using ExpenseTracking.Core.Models.Concrete;
+using ExpenseTracking.Core.DTOs.Concrete.Role;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,13 +55,11 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-/*
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
-builder.Services.AddScoped(typeof(ICategoryRepository), typeof(CategoryRepository));
-builder.Services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
-*/
+
+#region Update UserId Safety Filter Definitions
+builder.Services.AddScoped<UpdateUserIdSafetyFilter<Expense, ExpenseUpdateDto>>();
+#endregion
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

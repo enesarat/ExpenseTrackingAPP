@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.Services
 {
-    public interface IExpenseSevice : IGenericService<Expense>
+    public interface IExpenseService : IGenericService<Expense>
     {
     }
 }

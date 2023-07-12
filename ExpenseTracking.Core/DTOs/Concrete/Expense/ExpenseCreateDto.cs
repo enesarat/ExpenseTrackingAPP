@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.DTOs.Concrete.Expense
 {
-    public class ExpenseCreateDto : BaseDto
+    public class ExpenseCreateDto
     {
         public string Name { get; set; }
         public string Description { get; set; }

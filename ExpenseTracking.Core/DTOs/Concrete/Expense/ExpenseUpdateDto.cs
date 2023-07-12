@@ -15,5 +15,6 @@ namespace ExpenseTracking.Core.DTOs.Concrete.Expense
         public decimal Cost { get; set; }
         public int CategoryId { get; set; }
         public int PaymentTypeId { get; set; }
+        public int UserId { get; set; }
     }
 }

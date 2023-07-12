@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.DTOs.Concrete.Category
 {
-    public class CategoryCreateDto : BaseDto
+    public class CategoryCreateDto
     {
         public string Name { get; set; }
     }
