@@ -1,4 +1,5 @@
-﻿using ExpenseTracking.Core.Models.Abstract;
+﻿using ExpenseTracking.Core.DTOs.Concrete.Response;
+using ExpenseTracking.Core.Models.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace ExpenseTracking.Core.Services
 {
-    public interface IGenericService<T> where T : BaseModel
+    public interface IGenericService<Entity,Dto> where Entity : BaseModel where Dto : class
     {
-        Task<T> GetByIdAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<IQueryable<T>> WhereAsync(Expression<Func<T, bool>> expression);
-        Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
-        Task AddAsync(T item);
-        Task UpdateAsync(T item);
-        Task DeleteAsync(int id);
+        Task<CustomResponse<Dto>> GetByIdAsync(int id);
+        Task<CustomResponse<IEnumerable<Dto>>> GetAllAsync();
+        Task<CustomResponse<IQueryable<Dto>>> WhereAsync(Expression<Func<Entity, bool>> expression);
+        Task<CustomResponse<bool>> AnyAsync(Expression<Func<Entity, bool>> expression);
+        Task<CustomResponse<NoContentResponse>> AddAsync(Dto item);
+        Task<CustomResponse<NoContentResponse>> UpdateAsync(Dto item);
+        Task<CustomResponse<NoContentResponse>> DeleteAsync(int id);
     }
 }

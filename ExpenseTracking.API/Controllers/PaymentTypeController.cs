@@ -23,50 +23,32 @@ namespace ExpenseTracking.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var paymentType = await _service.GetByIdAsync(id);
-            var paymentTypeAsDto = _mapper.Map<PaymentTypeDto>(paymentType);
-
-            return CustomActionResult(CustomResponse<PaymentTypeDto>.Success(200, paymentTypeAsDto));
+            return CustomActionResult(await _service.GetByIdAsync(id));
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var paymentTypes = await _service.GetAllAsync();
-            var paymentTypesAsDto = _mapper.Map<List<PaymentTypeDto>>(paymentTypes.ToList());
-
-            return CustomActionResult(CustomResponse<List<PaymentTypeDto>>.Success(200, paymentTypesAsDto));
+            return CustomActionResult(await _service.GetAllAsync());
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(PaymentTypeCreateDto paymentTypeDto)
         {
-            var paymentType = _mapper.Map<PaymentType>(paymentTypeDto);
-            await _service.AddAsync(paymentType);
-
-            return CustomActionResult(CustomResponse<PaymentTypeCreateDto>.Success(201, paymentTypeDto));
+            return CustomActionResult(await _service.AddAsync(paymentTypeDto));
         }
 
         [HttpPut]
         public async Task<IActionResult> Put(PaymentTypeUpdateDto paymentTypeDto)
         {
-            var paymentType = _mapper.Map<PaymentType>(paymentTypeDto);
-            await _service.UpdateAsync(paymentType);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.UpdateAsync(paymentTypeDto));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var paymentType = await _service.GetByIdAsync(id);
-            if (paymentType == null)
-            {
-                return CustomActionResult(CustomResponse<NoContentResponse>.Fail(404, $"{typeof(PaymentType).Name} ({id}) not found. Delete operation is not successfull. "));
-            }
-            await _service.DeleteAsync(id);
+            return CustomActionResult(await _service.DeleteAsync(id));
 
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
         }
     }
 }

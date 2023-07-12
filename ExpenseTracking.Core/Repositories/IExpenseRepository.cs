@@ -9,5 +9,7 @@ namespace ExpenseTracking.Core.Repositories
 {
     public interface IExpenseRepository : IGenericRepository<Expense>
     {
+        Task<IEnumerable<Expense>> GetExpensesWithDetails();
+        Task<Expense> GetExpenseWithDetails(int id);
     }
 }

@@ -25,51 +25,32 @@ namespace ExpenseTracking.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var expense = await _service.GetByIdAsync(id);
-            var expenseAsDto = _mapper.Map<ExpenseDto>(expense);
-
-            return CustomActionResult(CustomResponse<ExpenseDto>.Success(200, expenseAsDto));
+            return CustomActionResult(await _service.GetExpenseWithDetailsAsync(id));
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var expenses = await _service.GetAllAsync();
-            var expensesAsDto = _mapper.Map<List<ExpenseDto>>(expenses.ToList());
-
-            return CustomActionResult(CustomResponse<List<ExpenseDto>>.Success(200, expensesAsDto));
+            return CustomActionResult(await _service.GetExpensesWithDetailsAsync());
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(ExpenseCreateDto expenseDto)
         {
-            var expense = _mapper.Map<Expense>(expenseDto);
-            await _service.AddAsync(expense);
-
-            return CustomActionResult(CustomResponse<ExpenseCreateDto>.Success(201, expenseDto));
+            return CustomActionResult(await _service.AddAsync(expenseDto));
         }
 
         [HttpPut]
         [ServiceFilter(typeof(UpdateUserIdSafetyFilter<Expense, ExpenseUpdateDto>))]
         public async Task<IActionResult> Put(ExpenseUpdateDto expenseDto)
         {
-            var expense = _mapper.Map<Expense>(expenseDto);
-            await _service.UpdateAsync(expense);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.UpdateAsync(expenseDto));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var expense = await _service.GetByIdAsync(id);
-            if (expense == null)
-            {
-                return CustomActionResult(CustomResponse<NoContentResponse>.Fail(404, $"{typeof(Expense).Name} ({id}) not found. Delete operation is not successfull. "));
-            }
-            await _service.DeleteAsync(id);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.DeleteAsync(id));
         }
     }
 }

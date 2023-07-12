@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ExpenseTracking.API.Filters;
+using ExpenseTracking.Core.DTOs.Concrete.Category;
 using ExpenseTracking.Core.DTOs.Concrete.Expense;
 using ExpenseTracking.Core.DTOs.Concrete.Response;
 using ExpenseTracking.Core.DTOs.Concrete.Role;
@@ -24,50 +25,31 @@ namespace ExpenseTracking.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var role = await _service.GetByIdAsync(id);
-            var roleAsDto = _mapper.Map<RoleDto>(role);
-
-            return CustomActionResult(CustomResponse<RoleDto>.Success(200, roleAsDto));
+            return CustomActionResult(await _service.GetByIdAsync(id));
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var roles = await _service.GetAllAsync();
-            var rolesAsDto = _mapper.Map<List<RoleDto>>(roles.ToList());
-
-            return CustomActionResult(CustomResponse<List<RoleDto>>.Success(200, rolesAsDto));
+            return CustomActionResult(await _service.GetAllAsync());
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(RoleCreateDto roleDto)
         {
-            var role = _mapper.Map<Role>(roleDto);
-            await _service.AddAsync(role);
-
-            return CustomActionResult(CustomResponse<RoleCreateDto>.Success(201, roleDto));
+            return CustomActionResult(await _service.AddAsync(roleDto));
         }
 
         [HttpPut]
         public async Task<IActionResult> Put(RoleUpdateDto roleDto)
         {
-            var role = _mapper.Map<Role>(roleDto);
-            await _service.UpdateAsync(role);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.UpdateAsync(roleDto));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var role = await _service.GetByIdAsync(id);
-            if (role == null)
-            {
-                return CustomActionResult(CustomResponse<NoContentResponse>.Fail(404, $"{typeof(Role).Name} ({id}) not found. Delete operation is not successfull. "));
-            }
-            await _service.DeleteAsync(id);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.DeleteAsync(id));
         }
     }
 }

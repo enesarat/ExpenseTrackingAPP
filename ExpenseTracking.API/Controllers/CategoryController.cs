@@ -22,50 +22,31 @@ namespace ExpenseTracking.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var catgory = await _service.GetByIdAsync(id);
-            var catgoryAsDto = _mapper.Map<CategoryDto>(catgory);
-
-            return CustomActionResult(CustomResponse<CategoryDto>.Success(200, catgoryAsDto));
+            return CustomActionResult(await _service.GetByIdAsync(id));
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var catgories = await _service.GetAllAsync();
-            var catgoriesAsDto = _mapper.Map<List<CategoryDto>>(catgories.ToList());
-
-            return CustomActionResult(CustomResponse<List<CategoryDto>>.Success(200, catgoriesAsDto));
+            return CustomActionResult(await _service.GetAllAsync());
         }
 
         [HttpPost]
         public async Task<IActionResult> Post(CategoryCreateDto categoryDto)
         {
-            var category = _mapper.Map<Category>(categoryDto);
-            await _service.AddAsync(category);
-
-            return CustomActionResult(CustomResponse<CategoryCreateDto>.Success(201, categoryDto));
+            return CustomActionResult(await _service.AddAsync(categoryDto));
         }
 
         [HttpPut]
         public async Task<IActionResult> Put(CategoryUpdateDto categoryDto)
         {
-            var category = _mapper.Map<Category>(categoryDto);
-            await _service.UpdateAsync(category);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.UpdateAsync(categoryDto));
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var category = await _service.GetByIdAsync(id);
-            if (category == null)
-            {
-                return CustomActionResult(CustomResponse<NoContentResponse>.Fail(404, $"{typeof(Category).Name} ({id}) not found. Delete operation is not successfull. "));
-            }
-            await _service.DeleteAsync(id);
-
-            return CustomActionResult(CustomResponse<NoContentResponse>.Success(204));
+            return CustomActionResult(await _service.DeleteAsync(id));
         }
     }
 }

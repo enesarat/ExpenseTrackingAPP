@@ -29,6 +29,7 @@ namespace ExpenseTracking.Service.Mappers
             CreateMap<Expense, ExpenseDto>()
             .ForMember(dest => dest.Category, opt => opt.MapFrom(src => src.Category.Name))
             .ForMember(dest => dest.PaymentType, opt => opt.MapFrom(src => src.PaymentType.Name))
+            .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User.Email))
             .ReverseMap();
 
             CreateMap<PaymentType, PaymentTypeDto>().ReverseMap();
