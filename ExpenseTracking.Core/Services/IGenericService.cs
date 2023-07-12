@@ -12,7 +12,7 @@ namespace ExpenseTracking.Core.Services
     {
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
-        Task<IEnumerable<T>> Where(Expression<Func<T, bool>> expression);
+        Task<IQueryable<T>> WhereAsync(Expression<Func<T, bool>> expression);
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task AddAsync(T item);
         Task UpdateAsync(T item);
