@@ -1,3 +1,4 @@
+using ExpenseTracking.API.Filters;
 using ExpenseTracking.Core.Repositories;
 using ExpenseTracking.Core.Services;
 using ExpenseTracking.Core.UnitOfWorks;
@@ -6,6 +7,13 @@ using ExpenseTracking.Repository.Repositories;
 using ExpenseTracking.Repository.UnitOfWorks;
 using ExpenseTracking.Service.Mappers;
 using ExpenseTracking.Service.Services;
+using ExpenseTracking.Service.Validations.Category;
+using ExpenseTracking.Service.Validations.Expense;
+using ExpenseTracking.Service.Validations.PaymentType;
+using ExpenseTracking.Service.Validations.Role;
+using ExpenseTracking.Service.Validations.User;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -13,7 +21,28 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CategoryDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CategoryUpdateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CategoryCreateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ExpenseDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ExpenseCreateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ExpenseUpdateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PaymentTypeDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PaymentTypeCreateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<PaymentTypeUpdateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<RoleDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<RoleUpdateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<RoleCreateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserUpdateDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserUpdateAsAdminDtoValidator>())
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserCreateDtoValidator>());
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
