@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExpenseTracking.Core.DTOs.Concrete.Account;
 using ExpenseTracking.Core.DTOs.Concrete.Category;
 using ExpenseTracking.Core.DTOs.Concrete.Expense;
 using ExpenseTracking.Core.DTOs.Concrete.Response;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +23,13 @@ namespace ExpenseTracking.Service.Services
     {
         private readonly IExpenseRepository _expenseRepository;
         private readonly IUserRepository _userRepository;
-        public ExpenseService(IGenericRepository<Expense> repository, IUnitOfWork unitOfWork, IMapper mapper, IExpenseRepository expenseRepository, IUserRepository userRepository) : base(repository, unitOfWork, mapper)
+        private readonly IHttpContextAccessor _contextAccessor;
+
+        public ExpenseService(IGenericRepository<Expense> repository, IUnitOfWork unitOfWork, IMapper mapper, IExpenseRepository expenseRepository, IUserRepository userRepository, IHttpContextAccessor contextAccessor) : base(repository, unitOfWork, mapper)
         {
             _expenseRepository = expenseRepository;
             _userRepository = userRepository;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<CustomResponse<NoContentResponse>> AddAsync(ExpenseCreateDto expenseCreateDto)
@@ -36,7 +41,10 @@ namespace ExpenseTracking.Service.Services
             var item = _mapper.Map<Expense>(expenseCreateDto);
             item.CreatedDate = DateTime.Now;
             item.TransactionDate= DateTime.Now;
-            item.CreatedBy = "SYSTEM";
+            using(var currentAccount = GetCurrentAccount())
+            {
+                item.CreatedBy = currentAccount.Result.Email;
+            }
             await _expenseRepository.AddAsync(item);
             await _unitOfWork.CommitAsync();
 
@@ -86,6 +94,28 @@ namespace ExpenseTracking.Service.Services
                 return CustomResponse<NoContentResponse>.Success(StatusCodes.Status204NoContent);
             }
             return CustomResponse<NoContentResponse>.Fail(StatusCodes.Status404NotFound, $" {typeof(Category).Name} ({expenseUpdateDto.Id}) not found. Updete operation is not successfull. ");
+        }
+        public async Task<ActiveAccountDto> GetCurrentAccount()
+        {
+            var identity = _contextAccessor.HttpContext.User.Identity as ClaimsIdentity;
+            var userClaims = identity.Claims;
+            var accountEmail = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value;
+            var user = _userRepository.Where(x => x.Email == accountEmail).FirstOrDefault();
+
+            if (user != null && user.RefreshToken != null)
+            {
+                ActiveAccountDto currentaccount = new ActiveAccountDto
+                {
+                    Email = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    Name = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
+                    Surname = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
+                    Role = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
+
+                };
+                return currentaccount;
+            }
+            else
+                throw new InvalidOperationException("Could not access active user information.");
         }
     }
 }

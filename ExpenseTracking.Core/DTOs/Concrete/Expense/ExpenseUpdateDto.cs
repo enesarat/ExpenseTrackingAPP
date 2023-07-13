@@ -16,5 +16,7 @@ namespace ExpenseTracking.Core.DTOs.Concrete.Expense
         public int CategoryId { get; set; }
         public int PaymentTypeId { get; set; }
         public int UserId { get; set; }
+        public string? CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

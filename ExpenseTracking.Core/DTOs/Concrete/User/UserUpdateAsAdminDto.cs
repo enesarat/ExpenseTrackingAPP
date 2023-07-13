@@ -14,5 +14,7 @@ namespace ExpenseTracking.Core.DTOs.Concrete.User
         public string Email { get; set; }
         public string Password { get; set; }
         public int RoleId { get; set; }
+        public string? CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

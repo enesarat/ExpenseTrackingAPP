@@ -10,5 +10,7 @@ namespace ExpenseTracking.Core.DTOs.Concrete.PaymentType
     public class PaymentTypeUpdateDto : BaseDto
     {
         public string Name { get; set; }
+        public string? CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

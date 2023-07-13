@@ -32,6 +32,7 @@ using ExpenseTracking.Core.DTOs.Concrete.User;
 using System.Net.Sockets;
 using Microsoft.AspNetCore.Http;
 using Microsoft.OpenApi.Models;
+using ExpenseTracking.Core.DTOs.Concrete.PaymentType;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -106,12 +107,25 @@ builder.Services.AddSwaggerGen(options =>
 
 #region Update UserId Safety Filter Definitions
 builder.Services.AddScoped<UpdateUserIdSafetyFilter<Expense, ExpenseUpdateDto>>();
+builder.Services.AddScoped<CreateDateSafetyFilter<Expense, ExpenseUpdateDto>>();
+builder.Services.AddScoped<CreatedBySafetyFilter<Expense, ExpenseUpdateDto>>();
 #endregion
 #region CreatedDate Filter Definitions
 builder.Services.AddScoped<CreateDateSafetyFilter<Category, CategoryUpdateDto>>();
+builder.Services.AddScoped<CreatedBySafetyFilter<Category, CategoryUpdateDto>>();
+
 builder.Services.AddScoped<CreateDateSafetyFilter<Role, RoleUpdateDto>>();
+builder.Services.AddScoped<CreatedBySafetyFilter<Role, RoleUpdateDto>>();
+
+
 builder.Services.AddScoped<CreateDateSafetyFilter<User, UserUpdateDto>>();
+builder.Services.AddScoped<CreatedBySafetyFilter<User, UserUpdateDto>>();
+
 builder.Services.AddScoped<CreateDateSafetyFilter<User, UserUpdateAsAdminDto>>();
+builder.Services.AddScoped<CreatedBySafetyFilter<User, UserUpdateAsAdminDto>>();
+
+builder.Services.AddScoped<CreateDateSafetyFilter<PaymentType, PaymentTypeUpdateDto>>();
+builder.Services.AddScoped<CreatedBySafetyFilter<PaymentType, PaymentTypeUpdateDto>>();
 #endregion
 
 

@@ -3,6 +3,7 @@ using ExpenseTracking.API.Filters;
 using ExpenseTracking.Core.DTOs.Concrete.Category;
 using ExpenseTracking.Core.DTOs.Concrete.Expense;
 using ExpenseTracking.Core.DTOs.Concrete.Response;
+using ExpenseTracking.Core.DTOs.Concrete.User;
 using ExpenseTracking.Core.Models.Concrete;
 using ExpenseTracking.Core.Services;
 using Microsoft.AspNetCore.Http;
@@ -42,6 +43,8 @@ namespace ExpenseTracking.API.Controllers
 
         [HttpPut]
         [ServiceFilter(typeof(UpdateUserIdSafetyFilter<Expense, ExpenseUpdateDto>))]
+        [ServiceFilter(typeof(CreateDateSafetyFilter<Expense, ExpenseUpdateDto>))]
+        [ServiceFilter(typeof(CreatedBySafetyFilter<Expense, ExpenseUpdateDto>))]
         public async Task<IActionResult> Put(ExpenseUpdateDto expenseDto)
         {
             return CustomActionResult(await _service.UpdateAsync(expenseDto));

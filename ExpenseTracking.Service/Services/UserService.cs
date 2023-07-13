@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExpenseTracking.Core.DTOs.Concrete.Account;
 using ExpenseTracking.Core.DTOs.Concrete.Response;
 using ExpenseTracking.Core.DTOs.Concrete.User;
 using ExpenseTracking.Core.Models.Concrete;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,16 +19,22 @@ namespace ExpenseTracking.Service.Services
     public class UserService : GenericService<User, UserDto>, IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IGenericRepository<User> repository, IUnitOfWork unitOfWork, IMapper mapper, IUserRepository userRepository) : base(repository, unitOfWork, mapper)
+        private readonly IHttpContextAccessor _contextAccessor;
+
+        public UserService(IGenericRepository<User> repository, IUnitOfWork unitOfWork, IMapper mapper, IUserRepository userRepository, IHttpContextAccessor contextAccessor) : base(repository, unitOfWork, mapper)
         {
             _userRepository = userRepository;
+            _contextAccessor = contextAccessor;
         }
 
         public async Task<CustomResponse<NoContentResponse>> AddAsync(UserCreateDto userCreateDto)
         {
             var item = _mapper.Map<User>(userCreateDto);
             item.CreatedDate = DateTime.Now;
-            item.CreatedBy = "SYSTEM";
+            using (var currentAccount = GetCurrentAccount())
+            {
+                item.CreatedBy = currentAccount.Result.Email;
+            }
             item.RoleId = 2;
             await _userRepository.AddAsync(item);
             await _unitOfWork.CommitAsync();
@@ -69,6 +77,28 @@ namespace ExpenseTracking.Service.Services
                 return CustomResponse<NoContentResponse>.Success(StatusCodes.Status204NoContent);
             }
             return CustomResponse<NoContentResponse>.Fail(StatusCodes.Status404NotFound, $" {typeof(User).Name} ({userUpdateDto.Id}) not found. Updete operation is not successfull. ");
+        }
+        public async Task<ActiveAccountDto> GetCurrentAccount()
+        {
+            var identity = _contextAccessor.HttpContext.User.Identity as ClaimsIdentity;
+            var userClaims = identity.Claims;
+            var accountEmail = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value;
+            var user = _userRepository.Where(x => x.Email == accountEmail).FirstOrDefault();
+
+            if (user != null && user.RefreshToken != null)
+            {
+                ActiveAccountDto currentaccount = new ActiveAccountDto
+                {
+                    Email = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
+                    Name = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Name)?.Value,
+                    Surname = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
+                    Role = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
+
+                };
+                return currentaccount;
+            }
+            else
+                throw new InvalidOperationException("Could not access active user information.");
         }
     }
 }

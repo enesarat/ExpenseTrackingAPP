@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ExpenseTracking.API.Filters;
 using ExpenseTracking.Core.DTOs.Concrete.Category;
 using ExpenseTracking.Core.DTOs.Concrete.PaymentType;
 using ExpenseTracking.Core.DTOs.Concrete.Response;
@@ -39,6 +40,8 @@ namespace ExpenseTracking.API.Controllers
         }
 
         [HttpPut]
+        [ServiceFilter(typeof(CreateDateSafetyFilter<PaymentType, PaymentTypeUpdateDto>))]
+        [ServiceFilter(typeof(CreatedBySafetyFilter<PaymentType, PaymentTypeUpdateDto>))]
         public async Task<IActionResult> Put(PaymentTypeUpdateDto paymentTypeDto)
         {
             return CustomActionResult(await _service.UpdateAsync(paymentTypeDto));
