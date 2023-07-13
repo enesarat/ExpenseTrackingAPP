@@ -34,6 +34,11 @@ namespace ExpenseTracking.API.Controllers
         {
             return CustomActionResult(await _service.GetExpensesWithDetailsAsync());
         }
+        [HttpGet("[Action]/{id}")]
+        public async Task<IActionResult> GetExpensesForUser(int id)
+        {
+            return CustomActionResult(await _service.GetExpensesForUser(id));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post(ExpenseCreateDto expenseDto)

@@ -16,6 +16,11 @@ namespace ExpenseTracking.Repository.Repositories
         {
         }
 
+        public async Task<IEnumerable<Expense>> GetExpensesForUser(int userId)
+        {
+            return _context.Expenses.Where(x => x.User.Id == userId).AsEnumerable();
+        }
+
         public async Task<IEnumerable<Expense>> GetExpensesWithDetails()
         {
             //Eager Loading

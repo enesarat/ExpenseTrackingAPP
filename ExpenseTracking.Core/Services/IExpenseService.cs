@@ -16,5 +16,7 @@ namespace ExpenseTracking.Core.Services
         public Task<CustomResponse<NoContentResponse>> UpdateAsync(ExpenseUpdateDto expenseUpdateDto);
         public Task<CustomResponse<IEnumerable<ExpenseDto>>> GetExpensesWithDetailsAsync();
         public Task<CustomResponse<ExpenseDto>> GetExpenseWithDetailsAsync(int id);
+        public Task<CustomResponse<ExpenseSumDto>> GetExpensesForUser(int id);
+
     }
 }

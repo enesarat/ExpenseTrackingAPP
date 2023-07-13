@@ -11,5 +11,7 @@ namespace ExpenseTracking.Core.Repositories
     {
         Task<IEnumerable<Expense>> GetExpensesWithDetails();
         Task<Expense> GetExpenseWithDetails(int id);
+
+        Task<IEnumerable<Expense>> GetExpensesForUser(int userId);
     }
 }

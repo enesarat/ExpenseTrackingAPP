@@ -117,5 +117,22 @@ namespace ExpenseTracking.Service.Services
             else
                 throw new InvalidOperationException("Could not access active user information.");
         }
+
+        public async Task<CustomResponse<ExpenseSumDto>> GetExpensesForUser(int id)
+        {
+            var expenses = _expenseRepository.GetExpensesForUser(id).Result;
+            if (_userRepository.GetByIdAsync(id).Result != null && expenses!=null && expenses.Any(x=>x.IsActive==true))
+            {
+                double totalCost = 0;
+                foreach (var expense in expenses)
+                {
+                    totalCost += (double)expense.Cost;
+                }
+                var expenseDtos = _mapper.Map<IEnumerable<ExpenseDto>>(expenses);
+                var expenseSum = new ExpenseSumDto { Sum= totalCost, Expenses = expenseDtos };
+                return CustomResponse<ExpenseSumDto>.Success(StatusCodes.Status200OK, expenseSum);
+            }
+            return CustomResponse<ExpenseSumDto>.Fail(StatusCodes.Status404NotFound, $" {typeof(Expense).Name} ({id}) not found.");
+        }
     }
 }
