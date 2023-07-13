@@ -18,10 +18,11 @@ namespace ExpenseTracking.Repository.UnitOfWorks
         private readonly ApplicationDbContext dbContext;
         public bool disposed;
 
-
-        public UnitOfWork(ApplicationDbContext dbContext)
+        public IGenericRepository<Role> RoleRepository { get; private set; }
+        public UnitOfWork(ApplicationDbContext dbContext, IGenericRepository<Role> roleRepository)
         {
             this.dbContext = dbContext;
+            RoleRepository = new GenericRepository<Role>(dbContext);
         }
 
 

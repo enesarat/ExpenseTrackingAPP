@@ -34,6 +34,28 @@ namespace ExpenseTracking.Service.Services
             return CustomResponse<NoContentResponse>.Success(StatusCodes.Status204NoContent);
         }
 
+        public async Task<CustomResponse<IEnumerable<UserDto>>> GetUsersWithRoleAsync()
+        {
+            var entities = await _userRepository.GetUsersWithRole();
+            var entitiesQueryable = entities.ToList().AsQueryable();
+            var activeEntities = entitiesQueryable.Where(x => x.IsActive == true);
+
+            var entitiesAsDto = _mapper.Map<IEnumerable<UserDto>>(activeEntities);
+            return CustomResponse<IEnumerable<UserDto>>.Success(StatusCodes.Status200OK, entitiesAsDto);
+        }
+
+        public async Task<CustomResponse<UserDto>> GetUserWithRoleAsync(int id)
+        {
+            var entity = await _userRepository.GetUserWithRole(id);
+            if (entity != null && entity.IsActive != false)
+            {
+                var entityAsDto = _mapper.Map<UserDto>(entity);
+
+                return CustomResponse<UserDto>.Success(StatusCodes.Status200OK, entityAsDto);
+            }
+            return CustomResponse<UserDto>.Fail(StatusCodes.Status404NotFound, $" {typeof(User).Name} ({id}) not found. Retrieve operation is not successfull. ");
+        }
+
         public async Task<CustomResponse<NoContentResponse>> UpdateAsync(UserUpdateDto userUpdateDto)
         {
             if (await _userRepository.AnyAsync(x => x.Id == userUpdateDto.Id && x.IsActive == true))

@@ -9,5 +9,7 @@ namespace ExpenseTracking.Core.Repositories
 {
     public interface IUserRepository : IGenericRepository<User>
     {
+        Task<IEnumerable<User>> GetUsersWithRole();
+        Task<User> GetUserWithRole(int id);
     }
 }

@@ -11,6 +11,7 @@ namespace ExpenseTracking.Core.UnitOfWorks
 {
     public interface IUnitOfWork
     {
+        IGenericRepository<Role> RoleRepository { get; }
         Task CommitAsync();
         void Commit();
     }

@@ -14,6 +14,7 @@ namespace ExpenseTracking.Core.Services
     {
         public Task<CustomResponse<NoContentResponse>> AddAsync(UserCreateDto userCreateDto);
         public Task<CustomResponse<NoContentResponse>> UpdateAsync(UserUpdateDto userUpdateDto);
-
+        public Task<CustomResponse<IEnumerable<UserDto>>> GetUsersWithRoleAsync();
+        public Task<CustomResponse<UserDto>> GetUserWithRoleAsync(int id);
     }
 }

@@ -140,13 +140,13 @@ namespace ExpenseTracking.Repository.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsActive", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2776), true, "Beslenme/Gıda", null },
-                    { 2, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2788), true, "Temizlik", null },
-                    { 3, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2792), true, "Teknolojik Alışveriş", null },
-                    { 4, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2793), true, "Eğlence", null },
-                    { 5, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2794), true, "Sağlık", null },
-                    { 6, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2796), true, "Acil İhtiyaç", null },
-                    { 7, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2797), true, "Giyim", null }
+                    { 1, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8496), true, "Beslenme/Gıda", null },
+                    { 2, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8509), true, "Temizlik", null },
+                    { 3, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8510), true, "Teknolojik Alışveriş", null },
+                    { 4, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8512), true, "Eğlence", null },
+                    { 5, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8513), true, "Sağlık", null },
+                    { 6, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8514), true, "Acil İhtiyaç", null },
+                    { 7, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8516), true, "Giyim", null }
                 });
 
             migrationBuilder.InsertData(
@@ -154,8 +154,8 @@ namespace ExpenseTracking.Repository.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsActive", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3333), true, "Nakit", null },
-                    { 2, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3336), true, "Kredi", null }
+                    { 1, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8936), true, "Nakit", null },
+                    { 2, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8938), true, "Kredi", null }
                 });
 
             migrationBuilder.InsertData(
@@ -163,8 +163,8 @@ namespace ExpenseTracking.Repository.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsActive", "Name", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3512), true, "Admin", null },
-                    { 2, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3514), true, "Standart", null }
+                    { 1, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9053), true, "Admin", null },
+                    { 2, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9055), true, "Standart", null }
                 });
 
             migrationBuilder.InsertData(
@@ -172,8 +172,8 @@ namespace ExpenseTracking.Repository.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "IsActive", "LastActivity", "Name", "Password", "RefreshToken", "RefreshTokenExpireDate", "RoleId", "Surname", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3618), "enes@gmail.com", true, null, "Enes", "ens123", null, null, 1, "Arat", null },
-                    { 2, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3620), "eren@gmail.com", true, null, "Eren", "ern123", null, null, 2, "Arat", null }
+                    { 1, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9171), "enes@gmail.com", true, null, "Enes", "$2a$11$Mnqi9RoGPlhOgFalgcahL.okqa2tnZgz3gtkTs7oeHFVmlSC507GS", null, null, 1, "Arat", null },
+                    { 2, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9174), "eren@gmail.com", true, null, "Eren", "$2a$11$Owh2PufGb1wWYTUt4bNUK.iqTrAMi5E09oRPFSIKVnuRawxm.flIO", null, null, 2, "Arat", null }
                 });
 
             migrationBuilder.InsertData(
@@ -181,17 +181,17 @@ namespace ExpenseTracking.Repository.Migrations
                 columns: new[] { "Id", "CategoryId", "Cost", "CreatedBy", "CreatedDate", "Description", "IsActive", "Name", "PaymentTypeId", "TransactionDate", "UpdatedDate", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, 560m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3095), "Hazırlanan listeye göre aylık market alışverişi yapıldı.", true, "Market Alışverişi", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3105), null, 1 },
-                    { 2, 2, 300m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3106), "Bulaşık deterjanı, peçete ve tuvalet kağıdı alındı.", true, "Deterjan ve Peçete", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3108), null, 1 },
-                    { 3, 3, 3400m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3109), "X markanın şarjlı elektrikli süpürgesinden alındı.", true, "Kablosuz Süpürge", 2, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3110), null, 2 },
-                    { 4, 4, 850m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3111), "Duman Grubu'nun 22 Temmuz'daki Harbiye açık hava konserine bilet alındı.", true, "Duman Konseri", 2, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3112), null, 2 },
-                    { 5, 5, 200m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3113), "KBB Doktor kontrolüne gidildi ve ilaç alındı.", true, "KBB Doktor Kontrolü", 2, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3114), null, 1 },
-                    { 6, 6, 250m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3115), "Telefonun yırtılan kılıfının yerine yenisi alındı.", true, "Telefon Kılıfı", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3116), null, 2 },
-                    { 7, 7, 1190m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3117), "Eskiyen ayakkabı yerine Converse ayakkabı alındı.", true, "Ayakkabı", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3119), null, 2 },
-                    { 8, 1, 850m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3119), "Akşam iş dönüşü dışarıda arkadaşlarla pizza ziyafeti.", true, "Pizza ve İçecek", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3121), null, 1 },
-                    { 9, 2, 300m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3122), "Kuaförde traş olunup, özel şampuan alındı.", true, "Kuaför ve Şampuan", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3123), null, 1 },
-                    { 10, 3, 430m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3124), "Telefon ve tablet için powerbank alındı.", true, "Powerbank", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3125), null, 2 },
-                    { 11, 4, 85m, "SYSTEM", new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3126), "Eskiyen ayakkabı yerine Converse ayakkabı alındı.", true, "Sinema", 1, new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3127), null, 2 }
+                    { 1, 1, 560m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8773), "Hazırlanan listeye göre aylık market alışverişi yapıldı.", true, "Market Alışverişi", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8778), null, 1 },
+                    { 2, 2, 300m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8780), "Bulaşık deterjanı, peçete ve tuvalet kağıdı alındı.", true, "Deterjan ve Peçete", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8782), null, 1 },
+                    { 3, 3, 3400m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8783), "X markanın şarjlı elektrikli süpürgesinden alındı.", true, "Kablosuz Süpürge", 2, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8785), null, 2 },
+                    { 4, 4, 850m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8786), "Duman Grubu'nun 22 Temmuz'daki Harbiye açık hava konserine bilet alındı.", true, "Duman Konseri", 2, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8788), null, 2 },
+                    { 5, 5, 200m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8789), "KBB Doktor kontrolüne gidildi ve ilaç alındı.", true, "KBB Doktor Kontrolü", 2, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8790), null, 1 },
+                    { 6, 6, 250m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8791), "Telefonun yırtılan kılıfının yerine yenisi alındı.", true, "Telefon Kılıfı", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8793), null, 2 },
+                    { 7, 7, 1190m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8794), "Eskiyen ayakkabı yerine Converse ayakkabı alındı.", true, "Ayakkabı", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8795), null, 2 },
+                    { 8, 1, 850m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8796), "Akşam iş dönüşü dışarıda arkadaşlarla pizza ziyafeti.", true, "Pizza ve İçecek", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8798), null, 1 },
+                    { 9, 2, 300m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8799), "Kuaförde traş olunup, özel şampuan alındı.", true, "Kuaför ve Şampuan", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8800), null, 1 },
+                    { 10, 3, 430m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8801), "Telefon ve tablet için powerbank alındı.", true, "Powerbank", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8803), null, 2 },
+                    { 11, 4, 85m, "SYSTEM", new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8804), "Eskiyen ayakkabı yerine Converse ayakkabı alındı.", true, "Sinema", 1, new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8805), null, 2 }
                 });
 
             migrationBuilder.CreateIndex(

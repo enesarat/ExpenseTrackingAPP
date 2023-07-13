@@ -24,12 +24,19 @@ using Microsoft.Extensions.Logging;
 using ExpenseTracking.Core.DTOs.Concrete.Expense;
 using ExpenseTracking.Core.Models.Concrete;
 using ExpenseTracking.Core.DTOs.Concrete.Role;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using ExpenseTracking.Core.DTOs.Concrete.Category;
+using ExpenseTracking.Core.DTOs.Concrete.User;
+using System.Net.Sockets;
+using Microsoft.AspNetCore.Http;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CategoryDtoValidator>())
     .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<CategoryUpdateDtoValidator>())
@@ -48,6 +55,8 @@ builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilte
     .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserUpdateAsAdminDtoValidator>())
     .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<UserCreateDtoValidator>());
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -55,11 +64,54 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "1.0.0",
+        Title = "EventMate RESTful API",
+        Contact = new OpenApiContact
+        {
+            Name = "Enes Arat",
+            Url = new Uri("https://github.com/enesarat"),
+            Email = "enes_arat@outlook.com"
+        },
+    });
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "Bearer"
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 
 #region Update UserId Safety Filter Definitions
 builder.Services.AddScoped<UpdateUserIdSafetyFilter<Expense, ExpenseUpdateDto>>();
+#endregion
+#region CreatedDate Filter Definitions
+builder.Services.AddScoped<CreateDateSafetyFilter<Category, CategoryUpdateDto>>();
+builder.Services.AddScoped<CreateDateSafetyFilter<Role, RoleUpdateDto>>();
+builder.Services.AddScoped<CreateDateSafetyFilter<User, UserUpdateDto>>();
+builder.Services.AddScoped<CreateDateSafetyFilter<User, UserUpdateAsAdminDto>>();
 #endregion
 
 
@@ -79,6 +131,21 @@ builder.Host.UseServiceProviderFactory
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepositoryAndServiceModule()));
 
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options => {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -91,6 +158,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCustomException();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

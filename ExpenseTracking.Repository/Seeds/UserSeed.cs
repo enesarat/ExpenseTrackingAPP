@@ -14,8 +14,8 @@ namespace ExpenseTracking.Repository.Seeds
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasData(
-                new User { Id = 1, Name = "Enes", Surname="Arat",Email="enes@gmail.com",Password="ens123",RoleId=1, CreatedDate = DateTime.Now, CreatedBy = "SYSTEM", IsActive = true },
-                new User { Id = 2, Name = "Eren", Surname = "Arat", Email = "eren@gmail.com", Password = "ern123", RoleId = 2, CreatedDate = DateTime.Now, CreatedBy = "SYSTEM", IsActive = true }
+                new User { Id = 1, Name = "Enes", Surname="Arat",Email="enes@gmail.com",Password= "$2a$11$Mnqi9RoGPlhOgFalgcahL.okqa2tnZgz3gtkTs7oeHFVmlSC507GS", RoleId=1, CreatedDate = DateTime.Now, CreatedBy = "SYSTEM", IsActive = true },
+                new User { Id = 2, Name = "Eren", Surname = "Arat", Email = "eren@gmail.com", Password = "$2a$11$Owh2PufGb1wWYTUt4bNUK.iqTrAMi5E09oRPFSIKVnuRawxm.flIO", RoleId = 2, CreatedDate = DateTime.Now, CreatedBy = "SYSTEM", IsActive = true }
                 );
         }
     }

@@ -56,7 +56,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 1,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2776),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8496),
                             IsActive = true,
                             Name = "Beslenme/Gıda"
                         },
@@ -64,7 +64,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 2,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2788),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8509),
                             IsActive = true,
                             Name = "Temizlik"
                         },
@@ -72,7 +72,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 3,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2792),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8510),
                             IsActive = true,
                             Name = "Teknolojik Alışveriş"
                         },
@@ -80,7 +80,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 4,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2793),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8512),
                             IsActive = true,
                             Name = "Eğlence"
                         },
@@ -88,7 +88,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 5,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2794),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8513),
                             IsActive = true,
                             Name = "Sağlık"
                         },
@@ -96,7 +96,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 6,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2796),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8514),
                             IsActive = true,
                             Name = "Acil İhtiyaç"
                         },
@@ -104,7 +104,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 7,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(2797),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8516),
                             IsActive = true,
                             Name = "Giyim"
                         });
@@ -172,12 +172,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 1,
                             Cost = 560m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3095),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8773),
                             Description = "Hazırlanan listeye göre aylık market alışverişi yapıldı.",
                             IsActive = true,
                             Name = "Market Alışverişi",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3105),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8778),
                             UserId = 1
                         },
                         new
@@ -186,12 +186,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 2,
                             Cost = 300m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3106),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8780),
                             Description = "Bulaşık deterjanı, peçete ve tuvalet kağıdı alındı.",
                             IsActive = true,
                             Name = "Deterjan ve Peçete",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3108),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8782),
                             UserId = 1
                         },
                         new
@@ -200,12 +200,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 3,
                             Cost = 3400m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3109),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8783),
                             Description = "X markanın şarjlı elektrikli süpürgesinden alındı.",
                             IsActive = true,
                             Name = "Kablosuz Süpürge",
                             PaymentTypeId = 2,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3110),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8785),
                             UserId = 2
                         },
                         new
@@ -214,12 +214,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 4,
                             Cost = 850m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3111),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8786),
                             Description = "Duman Grubu'nun 22 Temmuz'daki Harbiye açık hava konserine bilet alındı.",
                             IsActive = true,
                             Name = "Duman Konseri",
                             PaymentTypeId = 2,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3112),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8788),
                             UserId = 2
                         },
                         new
@@ -228,12 +228,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 5,
                             Cost = 200m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3113),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8789),
                             Description = "KBB Doktor kontrolüne gidildi ve ilaç alındı.",
                             IsActive = true,
                             Name = "KBB Doktor Kontrolü",
                             PaymentTypeId = 2,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3114),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8790),
                             UserId = 1
                         },
                         new
@@ -242,12 +242,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 6,
                             Cost = 250m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3115),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8791),
                             Description = "Telefonun yırtılan kılıfının yerine yenisi alındı.",
                             IsActive = true,
                             Name = "Telefon Kılıfı",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3116),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8793),
                             UserId = 2
                         },
                         new
@@ -256,12 +256,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 7,
                             Cost = 1190m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3117),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8794),
                             Description = "Eskiyen ayakkabı yerine Converse ayakkabı alındı.",
                             IsActive = true,
                             Name = "Ayakkabı",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3119),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8795),
                             UserId = 2
                         },
                         new
@@ -270,12 +270,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 1,
                             Cost = 850m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3119),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8796),
                             Description = "Akşam iş dönüşü dışarıda arkadaşlarla pizza ziyafeti.",
                             IsActive = true,
                             Name = "Pizza ve İçecek",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3121),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8798),
                             UserId = 1
                         },
                         new
@@ -284,12 +284,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 2,
                             Cost = 300m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3122),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8799),
                             Description = "Kuaförde traş olunup, özel şampuan alındı.",
                             IsActive = true,
                             Name = "Kuaför ve Şampuan",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3123),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8800),
                             UserId = 1
                         },
                         new
@@ -298,12 +298,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 3,
                             Cost = 430m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3124),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8801),
                             Description = "Telefon ve tablet için powerbank alındı.",
                             IsActive = true,
                             Name = "Powerbank",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3125),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8803),
                             UserId = 2
                         },
                         new
@@ -312,12 +312,12 @@ namespace ExpenseTracking.Repository.Migrations
                             CategoryId = 4,
                             Cost = 85m,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3126),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8804),
                             Description = "Eskiyen ayakkabı yerine Converse ayakkabı alındı.",
                             IsActive = true,
                             Name = "Sinema",
                             PaymentTypeId = 1,
-                            TransactionDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3127),
+                            TransactionDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8805),
                             UserId = 2
                         });
                 });
@@ -356,7 +356,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 1,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3333),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8936),
                             IsActive = true,
                             Name = "Nakit"
                         },
@@ -364,7 +364,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 2,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3336),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(8938),
                             IsActive = true,
                             Name = "Kredi"
                         });
@@ -404,7 +404,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 1,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3512),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9053),
                             IsActive = true,
                             Name = "Admin"
                         },
@@ -412,7 +412,7 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 2,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3514),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9055),
                             IsActive = true,
                             Name = "Standart"
                         });
@@ -480,11 +480,11 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 1,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3618),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9171),
                             Email = "enes@gmail.com",
                             IsActive = true,
                             Name = "Enes",
-                            Password = "ens123",
+                            Password = "$2a$11$Mnqi9RoGPlhOgFalgcahL.okqa2tnZgz3gtkTs7oeHFVmlSC507GS",
                             RoleId = 1,
                             Surname = "Arat"
                         },
@@ -492,11 +492,11 @@ namespace ExpenseTracking.Repository.Migrations
                         {
                             Id = 2,
                             CreatedBy = "SYSTEM",
-                            CreatedDate = new DateTime(2023, 7, 12, 16, 39, 25, 58, DateTimeKind.Local).AddTicks(3620),
+                            CreatedDate = new DateTime(2023, 7, 13, 4, 30, 51, 934, DateTimeKind.Local).AddTicks(9174),
                             Email = "eren@gmail.com",
                             IsActive = true,
                             Name = "Eren",
-                            Password = "ern123",
+                            Password = "$2a$11$Owh2PufGb1wWYTUt4bNUK.iqTrAMi5E09oRPFSIKVnuRawxm.flIO",
                             RoleId = 2,
                             Surname = "Arat"
                         });
